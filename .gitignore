@@ -6,3 +6,6 @@
 tier2/data/*
 !tier2/data/.placeholder
 tier2/temp
+
+rmp/data/*
+!rmp/data/.placeholder

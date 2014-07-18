@@ -5,4 +5,4 @@
 
 tier2/data/*
 !tier2/data/.placeholder
-tier2/.temp
+tier2/temp

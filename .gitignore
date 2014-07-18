@@ -1,0 +1,8 @@
+.DS_Store
+*.pyc
+*.swo
+*.swp
+
+tier2/data/*
+!tier2/data/.placeholder
+tier2/.temp

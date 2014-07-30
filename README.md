@@ -7,8 +7,12 @@ Setup
 -----
 
 ```
+# Install requirements
 pip install requirements.txt
 brew install mdbtools
+
+# Start postgres
+pgup
 ```
 
 Tier2

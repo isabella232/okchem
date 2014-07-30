@@ -12,10 +12,16 @@ mdb-schema data/RMPData.mdb postgres > schema.sql
 # mdbtools generates bool columns but integer values :(
 sed -i '' "s/BOOL\ NOT\ NULL/INTEGER/" schema.sql
 
-cat schema.sql | psql -q rmp
-rm schema.sql
+# mdbtools generates bad uniques on lots of indexes
+sed -i '' "s/UNIQUE\ //" schema.sql
 
-# Import order so FKs don't error
+# mdbtools generates bad primary keys too
+sed -i '' "/ALTER\ TABLE/d" schema.sql
+
+cat schema.sql | psql -q rmp
+#rm schema.sql
+
+# Import order is important so FKs don't error
 declare -a tables=(
     "tlkpAdminRefreshInfo"
     "tlkpChemicals"
@@ -38,7 +44,8 @@ declare -a tables=(
     # "tblS1Facilities_ChangeHistory"
     "tblS1Processes"
     # "tblS1Processes_ChangeHistory"
-    "tblS1Process_NAICS"
+    # NB: This table has a bad index on NAICSCode
+    # "tblS1Process_NAICS"
     # "tblS1Process_NAICS_ChangeHistory"
     "tblS1ProcessChemicals"
     # "tblS1ProcessChemicals_ChangeHistory"
@@ -58,10 +65,10 @@ declare -a tables=(
     # "tblS5FlammablesAltReleases_ChangeHistory"
     
     "tlkpS6InitiatingEvents"
-    "tblS6AccidentChemicals"
-    # "tblS6AccidentChemicals_ChangeHistory"
     "tblS6AccidentHistory"
     # "tblS6AccidentHistory_ChangeHistory"
+    "tblS6AccidentChemicals"
+    # "tblS6AccidentChemicals_ChangeHistory"
     "tblS6FlammableMixtureChemicals"
     # "tblS6FlammableMixtureChemicals_ChangeHistory"
     
@@ -83,8 +90,8 @@ declare -a tables=(
     "tblExecutiveSummaries"
     # "tblExecutiveSummaries_ChangeHistory"
 
-    "tblRMPError"
-    "tblRMPTrack"
+    # "tblRMPError"
+    # "tblRMPTrack"
 )
 
 for table in "${tables[@]}"; do

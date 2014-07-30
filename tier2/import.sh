@@ -21,6 +21,9 @@ do
     ./clean.py $path temp/$slug.csv
     in2csv -e latin1 temp/$slug.csv > temp/$slug.utf8.csv
 
-    psql -q tier2 -c "COPY $slug FROM '`pwd`/temp/$slug.utf8.csv' DELIMITER ',' CSV;"
+    # Trim header
+    tail -n +2 "temp/$slug.utf8.csv" > temp/$slug.headless.utf8.csv
+
+    psql -q tier2 -c "COPY $slug FROM '`pwd`/temp/$slug.headless.utf8.csv' DELIMITER ',' CSV;"
 done
 

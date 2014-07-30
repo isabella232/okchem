@@ -10,7 +10,7 @@ CREATE TABLE Tier2Contacts
     Contact2Type varchar,
     Contact3Type varchar,
     Contact4Type varchar,
-    ContactRecordID varchar,
+    ContactRecordID varchar,    -- PRIMARY KEY, CTTR*
     FirstName varchar,
     LastName varchar,
     ModificationDate varchar,
@@ -23,8 +23,8 @@ CREATE TABLE Tier2ChemicalsInInventory
     Acute varchar,
     AveAmount varchar,
     AveAmountCode varchar,
-    CFacilityRouteRecordID varchar,
-    ChemInvRecordID varchar,
+    CFacilityRouteRecordID varchar, -- to Tier2Facilities, FATR*
+    ChemInvRecordID varchar,        -- PRIMARY KEY, CVTR*
     ChemSameAsLastYr varchar,
     Chronic varchar,
     CiCAS varchar,
@@ -70,8 +70,8 @@ CREATE TABLE Tier2ChemicalsInInventory
 
 CREATE TABLE Tier2ChemInvMixtures
 (
-    RecordKey varchar,
-    FacilityRouteRecordID varchar,
+    RecordKey varchar,              -- PRIMARY KEY, CMTR*
+    FacilityRouteRecordID varchar,  -- ????, ==FATR*
     ChemInvRecID varchar,
     MxChem varchar,
     MxCAS varchar,
@@ -84,9 +84,9 @@ CREATE TABLE Tier2ChemInvMixtures
 
 CREATE TABLE Tier2ContactsLink
 (
-    ContactRecordID varchar,
-    OtherRecordID varchar,
-    RecordKey varchar
+    ContactRecordID varchar,    -- to Tier2Contacts, CTTR*
+    OtherRecordID varchar,      -- to Tier2Facilities, FATR*
+    RecordKey varchar           -- PRIMARY KEY, CKTR*
 );
 
 CREATE TABLE Tier2Facilities
@@ -95,7 +95,7 @@ CREATE TABLE Tier2Facilities
     DikeOrOtherSafeguard varchar,
     FacilityDept varchar,
     FacilityName varchar,
-    FacilityRecordID varchar,
+    FacilityRecordID varchar,   -- PRIMARY KEY, FATR*
     FailedValidation varchar,
     FCity varchar,
     FCountry varchar,
@@ -152,11 +152,12 @@ CREATE TABLE Tier2Facilities
     FacilityInfoSameAsLastYear varchar
 );
 
+-- SIC, Dun & Brads and NAICS numbers
 CREATE TABLE Tier2FacilityIDs
 (
-    RecordKey varchar,
-    FacilityRecordID varchar,
-    Id varchar,
+    RecordKey varchar,              -- PRIMARY KEY, FDTR*
+    FacilityRecordID varchar,       -- to Tier2Facilities, FATR*
+    Id varchar,                     -- the 3rd party id
     Type varchar,
     Description varchar,
     LastModified varchar
@@ -164,8 +165,8 @@ CREATE TABLE Tier2FacilityIDs
 
 CREATE TABLE Tier2Phone
 (
-    RecordKey varchar,
-    ParentRecordID varchar,
+    RecordKey varchar,              -- PRIMARY KEY, PHTR*
+    ParentRecordID varchar,         -- to Tier2Contacts, CTTR*
     Phone varchar,
     Type varchar,
     PhLastModified varchar

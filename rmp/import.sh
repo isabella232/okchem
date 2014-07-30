@@ -78,10 +78,10 @@ declare -a tables=(
     # "tblS7PreventionProgram3_ChangeHistory"
     # "tblS7PreventionProgram3Description_ChangeHistory"
     
-    "tblS8PreventionProgram2"
-    # "tblS8PreventionProgram2_ChangeHistory"
     "tblS8_Prevention_Program_Chemicals"
     # "tblS8_Prevention_Program_Chemicals_ChangeHistory"
+    "tblS8PreventionProgram2"
+    # "tblS8PreventionProgram2_ChangeHistory"
     # "tblS8PreventionProgram2Description_ChangeHistory"
     
     "tblS9EmergencyResponses"

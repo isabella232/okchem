@@ -1,7 +1,7 @@
 okchem
 ======
 
-Notes: https://docs.google.com/document/d/1iyCDyMfhj6Awf4a7ERWDanzc2z0eh4-mSPW__iOZrTY/edit
+Notes: https://docs.google.com/a/npr.org/document/d/1AShfA79Q96-PAoUxtYEYYsI4BBlBcdcW_kg-J7Gty00/edit#
 
 Setup
 -----

@@ -21,7 +21,7 @@ CREATE TABLE Tier2Contacts
 CREATE TABLE Tier2ChemicalsInInventory 
 (
     Acute varchar,
-    AveAmount varchar,
+    AveAmount float,
     AveAmountCode varchar,
     CFacilityRouteRecordID varchar, -- to Tier2Facilities, FATR*
     ChemInvRecordID varchar,        -- PRIMARY KEY, CVTR*
@@ -35,9 +35,9 @@ CREATE TABLE Tier2ChemicalsInInventory
     Fire varchar,
     Gas varchar,
     Liquid varchar,
-    MaxAmount varchar,
+    MaxAmount float,
     MaxAmountCode varchar,
-    MaxAmtContainer varchar,
+    MaxAmtContainer float,
     Mixture varchar,
     Pressure varchar,
     Pure varchar,

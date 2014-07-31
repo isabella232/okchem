@@ -171,3 +171,4 @@ CREATE TABLE Tier2Phone
     Type varchar,
     PhLastModified varchar
 );
+

@@ -28,4 +28,4 @@ do
     psql -q tier2 -c "COPY $slug FROM '`pwd`/temp/$slug.headless.utf8.csv' DELIMITER ',' CSV;"
 done
 
-psql -q tier2 -c "SELECT AddGeometryColumn ('public', 'tier2facilities', 'geom', 4269, 'POINT', 2);"
+cat npr.sql | psql -q tier2 

@@ -1,4 +1,4 @@
-CREATE TABLE Tier2Contacts 
+CREATE TABLE Tier2Contacts
 (
     CoEmail varchar,
     CoMailAddress varchar,
@@ -18,7 +18,7 @@ CREATE TABLE Tier2Contacts
     DunAndBradstreet varchar
 );
 
-CREATE TABLE Tier2ChemicalsInInventory 
+CREATE TABLE Tier2ChemicalsInInventory
 (
     Acute varchar,
     AveAmount float,
@@ -111,8 +111,8 @@ CREATE TABLE Tier2Facilities
     FState varchar,
     FStreetAddress varchar,
     FZip varchar,
-    Latitude varchar,
-    Longitude varchar,
+    Latitude float,
+    Longitude float,
     ReportYear varchar,
     SiteCoordAbbrev varchar,
     SiteMap varchar,

@@ -4,7 +4,8 @@
 dropdb rmp
 
 # Get psql ready
-createdb rmp 
+createdb rmp
+psql -q rmp -c "create extension postgis"
 
 # Generate database schema
 mdb-schema data/RMPData.mdb postgres > schema.sql
@@ -54,16 +55,16 @@ declare -a tables=(
     "tlkpS2ScenarioCodes"
     "tblS2ToxicsWorstCase"
     # "tblS2ToxicsWorstCase_ChangeHistory"
-    
+
     "tblS3ToxicsAltReleases"
     # "tblS3ToxicsAltReleases_ChangeHistory"
-    
+
     "tblS4FlammablesWorstCase"
     # "tblS4FlammablesWorstCase_ChangeHistory"
-    
+
     "tblS5FlammablesAltReleases"
     # "tblS5FlammablesAltReleases_ChangeHistory"
-    
+
     "tlkpS6InitiatingEvents"
     "tblS6AccidentHistory"
     # "tblS6AccidentHistory_ChangeHistory"
@@ -71,22 +72,22 @@ declare -a tables=(
     # "tblS6AccidentChemicals_ChangeHistory"
     "tblS6FlammableMixtureChemicals"
     # "tblS6FlammableMixtureChemicals_ChangeHistory"
-    
+
     "tblS7_Prevention_Program_Chemicals"
     # "tblS7_Prevention_Program_Chemicals_ChangeHistory"
     "tblS7PreventionProgram3"
     # "tblS7PreventionProgram3_ChangeHistory"
     # "tblS7PreventionProgram3Description_ChangeHistory"
-    
+
     "tblS8_Prevention_Program_Chemicals"
     # "tblS8_Prevention_Program_Chemicals_ChangeHistory"
     "tblS8PreventionProgram2"
     # "tblS8PreventionProgram2_ChangeHistory"
     # "tblS8PreventionProgram2Description_ChangeHistory"
-    
+
     "tblS9EmergencyResponses"
     # "tblS9EmergencyResponses_ChangeHistory"
-    
+
     "tblExecutiveSummaries"
     # "tblExecutiveSummaries_ChangeHistory"
 

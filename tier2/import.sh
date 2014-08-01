@@ -28,4 +28,6 @@ do
     psql -q tier2 -c "COPY $slug FROM '`pwd`/temp/$slug.headless.utf8.csv' DELIMITER ',' CSV;"
 done
 
-cat npr.sql | psql -q tier2 
+cat npr.sql | psql -q tier2
+
+psql -q tier2 -c "create view no_oil as select * from tier2facilities where \"naics_code\" NOT LIKE '21%'  AND \"naics_code\" NOT LIKE '22%'  AND \"naics_code\"  != '454312' AND \"naics_code\" NOT LIKE '48611%'

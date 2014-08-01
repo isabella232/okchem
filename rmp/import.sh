@@ -19,7 +19,11 @@ sed -i '' "s/UNIQUE\ //" schema.sql
 # mdbtools generates bad primary keys too
 sed -i '' "/ALTER\ TABLE/d" schema.sql
 
+sed -i '' "/CREATE\ INDEX/d" schema.sql
+
+
 cat schema.sql | psql -q rmp
+
 #rm schema.sql
 
 # Import order is important so FKs don't error
@@ -99,3 +103,5 @@ for table in "${tables[@]}"; do
     echo "Importing $table"
     mdb-export -I postgres -q \' data/RMPData.mdb "$table" | psql -q rmp
 done
+
+cat npr.sql | psql -q rmp

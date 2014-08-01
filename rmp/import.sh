@@ -1,11 +1,10 @@
 #!/bin/bash
 
 # Cleanup from previous runs
-dropdb rmp
 
 # Get psql ready
-createdb rmp
-psql -q rmp -c "create extension postgis"
+createdb okchem
+psql -q okchem -c "create extension postgis"
 
 # Generate database schema
 mdb-schema data/RMPData.mdb postgres > schema.sql
@@ -22,7 +21,7 @@ sed -i '' "/ALTER\ TABLE/d" schema.sql
 sed -i '' "/CREATE\ INDEX/d" schema.sql
 
 
-cat schema.sql | psql -q rmp
+cat schema.sql | psql -q okchem
 
 #rm schema.sql
 
@@ -101,7 +100,7 @@ declare -a tables=(
 
 for table in "${tables[@]}"; do
     echo "Importing $table"
-    mdb-export -I postgres -q \' data/RMPData.mdb "$table" | psql -q rmp
+    mdb-export -I postgres -q \' data/RMPData.mdb "$table" | psql -q okchem
 done
 
-cat npr.sql | psql -q rmp
+cat npr.sql | psql -q okchem

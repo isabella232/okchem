@@ -1,4 +1,4 @@
--- 491 total
+-- 451 total
 
 SELECT DISTINCT "FacilityName" FROM most_recent
 INNER JOIN "tblS1Processes" ON most_recent."FacilityID" = "tblS1Processes"."FacilityID"

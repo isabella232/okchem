@@ -30,3 +30,5 @@ do
 done
 
 cat npr.sql | psql -q okchem
+
+psql -q okchem -c "COPY ehs FROM '`pwd`/ehs.csv' DELIMITER ',' CSV;"

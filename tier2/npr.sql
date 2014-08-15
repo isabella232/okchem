@@ -1,5 +1,7 @@
 SELECT AddGeometryColumn ('public', 'tier2facilities', 'geom', 4269, 'POINT', 2);
 
+UPDATE Tier2Facilities SET geom = ST_SetSRID(ST_MakePoint(longitude, latitude), 4269);
+
 ALTER TABLE Tier2Facilities ADD COLUMN duns_id varchar;
 UPDATE Tier2Facilities SET duns_id = id FROM Tier2FacilityIds WHERE Tier2FacilityIDs.FacilityRecordID = Tier2Facilities.FacilityRecordID and type = 'Dun & Bradstreet' and Id <> '';
 
@@ -28,3 +30,11 @@ UPDATE Tier2ChemicalsInInventory SET aveamount_from_code =
         WHEN aveamountcode::integer = 12 THEN 5500000
         WHEN aveamountcode::integer = 13 THEN 10000000
     END;
+
+CREATE OR REPLACE VIEW emergency_planning AS SELECT * FROM tier2facilities WHERE "subjectoemergencyplanning_y" IS TRUE;
+
+CREATE TABLE ehs
+(
+    name varchar,
+    cas varchar
+);
